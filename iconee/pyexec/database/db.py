@@ -150,6 +150,8 @@ class ContextDatabase(object):
         :param key:
         :return: value
         """
+        if context:
+            context.stats['get'] += 1
         value = self._db.get(key)
         if value is not None:
             self._charge_step_get(context, value)
@@ -164,7 +166,8 @@ class ContextDatabase(object):
         """
         if not _is_db_writable_on_context(context):
             raise DatabaseException('No permission to write')
-
+        if context:
+            context.stats['set'] += 1
         if value:
             try:
                 # apply steps for set first

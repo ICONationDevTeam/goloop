@@ -67,6 +67,7 @@ class ServiceEngine(ContextContainer):
         cls._pop_context()
 
         Logger.debug(f'*** RESULT: {status}, {step_used}, {ret}', TAG)
+        Logger.debug(f'*** STATS: method={context.method} {context.stats}', TAG)
         return status, step_used, ret
 
     @classmethod

@@ -100,6 +100,7 @@ class IconScoreContext(object):
 
         self.revision: int = 0
         self.func_type: Optional['IconScoreFuncType'] = None
+        self.stats = {'get': 0, 'set': 0}
 
     def set_invoke_params(self, code: str, to: 'Address', method: str, params: Any):
         self.code = code
